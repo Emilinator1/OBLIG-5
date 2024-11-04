@@ -7,6 +7,7 @@ from flask import session
 from kgmodel import (Foresatt, Barn, Soknad, Barnehage)
 from kgcontroller import (form_to_object_soknad, insert_soknad, commit_all, select_alle_barnehager)
 
+
 app = Flask(__name__)
 app.secret_key = 'BAD_SECRET_KEY' # nødvendig for session
 
@@ -41,12 +42,12 @@ def commit():
     commit_all()
     return render_template('commit.html')
 
-
-
+if __name__ == '__main__':
+    app.run(debug=True)
 
 """
 Referanser
-[1] https://stackoverflow.com/questions/21668481/difference-between-render-template-and-redirect
+[1] https://stackoverflow.com/questions/21668481/difference-between-render_template-and-redirect
 """
 
 """
