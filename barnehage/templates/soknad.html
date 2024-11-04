@@ -2,13 +2,13 @@
 
 {% block content %}
 <form method="POST" action="/behandle"> 
-	<label for="kindergarten_id">Select Kindergarten:</label>
-<select id="kindergarten_id" name="kindergarten_id">
+	<label for="barnehade_id">Velg Barnehage:</label>
+<select id="barnehage_id" name="barnehage_id">
     {% for kg in data %}
     <option value="{{ kg.barnehage_id }}">{{ kg.barnehage_navn }} - Available: {{ kg.barnehage_ledige_plasser }}</option>
     {% endfor %}
 </select>
-
+	<br>
 	<label for="navn_forelder_1">Navn - Forelder 1:</label> 
 	<input type="text" id="navn_forelder_1" name="navn_forelder_1" />
     <br> 
