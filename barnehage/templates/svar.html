@@ -1,12 +1,20 @@
 {% extends 'base.html' %}
-<!-- Skriv inn din kode her for å returnere svar for bruksscenario om svar på en søknad. --> 
+
 {% block content %}
-<table border=1>
-	{% for k,v in data.items() %}
-	<tr>
-		<th>{{ k }}</th>
-		<td>{{ v }}</td>
-	</tr>
-	{% endfor %}
-</table>
+<h2>Søknadsresultat</h2>
+<p>Søker: {{ data.get('foresatt_navn') }}</p>
+<p>Barn: {{ data.get('barn_navn') }}</p>
+<p>Status: <strong>{{ message }}</strong></p>
+
+{% if kglist %}
+    <h3>Tilbud (høyest prioritert øverst):</h3>
+    <ul>
+        {% for kg in kglist %}
+        <li>{{ kg.barnehage_navn }} - Ledige plasser: {{ kg.barnehage_ledige_plasser }}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>AVSLAG: Ingen ledige plasser på de valgte barnehager.</p>
+{% endif %}
+
 {% endblock %}
