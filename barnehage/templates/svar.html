@@ -10,24 +10,3 @@
 	{% endfor %}
 </table>
 {% endblock %}
-{% extends 'base.html' %}
-
-{% block content %}
-    <h2>Application Response</h2>
-    {% if data.status == 'Tilbud' %}
-        <p style="color: green; font-weight: bold;">Congratulations! You have received an offer for a kindergarten spot.</p>
-    {% elif data.status == 'Avslag' %}
-        <p style="color: red; font-weight: bold;">Unfortunately, your application was not accepted.</p>
-    {% else %}
-        <p>Your application is still being processed.</p>
-    {% endif %}
-
-    <table border=1>
-        {% for k, v in data.items() %}
-            <tr>
-                <th>{{ k }}</th>
-                <td>{{ v }}</td>
-            </tr>
-        {% endfor %}
-    </table>
-{% endblock %}
